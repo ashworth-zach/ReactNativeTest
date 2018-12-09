@@ -9,32 +9,33 @@ export default class FetchExample extends React.Component {
   }
 
   componentDidMount(){
-    var arr = [];
-    for(let i = 0 ; i < 2;i++){
-       fetch('https://pokeapi.co/api/v2/pokemon/'+i+'/') 
-      .then((response) => arr.push(response))
-      }
+    // var arr = [];
+    // for(let i = 0 ; i < 2;i++){
+    //    fetch('https://pokeapi.co/api/v2/pokemon/'+i+'/') 
+    //   .then((response) => arr.push(response))
+    //   }
 
-    this.setState({
-              isLoading: false,
-              dataSource: arr,
-            });
-    };
-    // return fetch('https://pokeapi.co/api/v2/pokemon/')
-    //   .then((response) => response.json())
-    //   .then((responseJson) => {
+    // this.setState({
+    //           isLoading: false,
+    //           dataSource: arr,
+    //         });
+    // };
+    return fetch('https://pokeapi.co/api/v2/pokemon/')
+      .then((response) => response.json())
+      .then((responseJson) => {
 
-    //     this.setState({
-    //       isLoading: false,
-    //       dataSource: responseJson.results,
-    //     }, function(){
+        this.setState({
+          isLoading: false,
+          dataSource: responseJson.results,
+        }, function(){
 
-    //     });
+        });
 
-    //   })
-    //   .catch((error) =>{
-    //     console.error(error);
-    //   });
+      })
+      .catch((error) =>{
+        console.error(error);
+      });
+    }
 
 
 
